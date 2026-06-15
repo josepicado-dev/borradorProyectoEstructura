@@ -1,0 +1,9 @@
+{
+  "nombreSede": "Hospital Central",
+  "cantidadSalasM": 5,
+  "cantidasConsultorios": 4,
+  "cantidadSalasEmer": 2,
+  "salaPreferencial": 1,
+  "consultorPreferencial": 1,
+  "salaEmergenciaCritica": 2
+}
