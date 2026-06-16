@@ -5,7 +5,7 @@
 package cr.ac.ufidelitas.mediqueue.archivos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import cr.ac.ufidelitas.mediqueue.estructuras.PilaUsuario;
+import cr.ac.ufidelitas.mediqueue.estructuras.Pila;
 import cr.ac.ufidelitas.mediqueue.modelo.Sede;
 import cr.ac.ufidelitas.mediqueue.modelo.usuario;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * @author josem
  */
 public class ArchivoJSON {
-    PilaUsuario<usuario> pila = new PilaUsuario<>();
+    
     //acá se van a guardar dos funciones principales
     //Guardar JSON
     //Leer JSON
@@ -35,7 +35,7 @@ public class ArchivoJSON {
             
         }
     }
-    public static void guardarUsuario(PilaUsuario pila, String rutaArchivo){
+    public static void guardarUsuario(Pila pila, String rutaArchivo){
         try{
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             FileWriter writer= new FileWriter(rutaArchivo);

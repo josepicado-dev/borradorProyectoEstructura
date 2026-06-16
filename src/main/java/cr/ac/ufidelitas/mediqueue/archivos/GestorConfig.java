@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cr.ac.ufidelitas.mediqueue.archivos;
-import cr.ac.ufidelitas.mediqueue.estructuras.PilaUsuario;
+import com.google.gson.GsonBuilder;
+import cr.ac.ufidelitas.mediqueue.controlador.ConfigurarSistema;
+import cr.ac.ufidelitas.mediqueue.estructuras.Pila;
 import cr.ac.ufidelitas.mediqueue.modelo.Sede;
 import cr.ac.ufidelitas.mediqueue.modelo.usuario;
 import java.io.BufferedReader;
@@ -23,8 +25,7 @@ public class GestorConfig {
     //aca se nombra el nombre del arhcivo
     private static String ARCHIVO_CONFIG = "config.txt";
     
-    //Scanner para consola.
-    Scanner sc = new Scanner(System.in);
+   
     
     //aca se verifica si el archivo existe
     public static boolean existeArchivoConfig(){
@@ -42,6 +43,30 @@ public class GestorConfig {
             }
         }catch(IOException e1){
             System.out.println("Error creando el archivo"+ e1.getMessage());
+        }
+    }
+    
+    public static void guardarConfiguracionSede(ConfigurarSistema config){
+        try {
+            com.google.gson.Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter(ARCHIVO_CONFIG);
+            gson.toJson(config, writer);
+            writer.close();
+            System.out.println("Archivo JSON fue guardado correctamente");
+        } catch (IOException e1) {
+            System.out.println("Error al guardar config.json: " + e1.getMessage());
+        }
+    }
+    
+    public static ConfigurarSistema leerConfig() {
+        try {
+            FileReader reader = new FileReader(ARCHIVO_CONFIG);
+            ConfigurarSistema config = new Gson().fromJson(reader, ConfigurarSistema.class);
+            reader.close();
+            return config;
+        } catch (IOException e1) {
+            System.out.println("Error al leer config.json: " + e1.getMessage());
+            return null;
         }
     }
     
@@ -65,8 +90,8 @@ public class GestorConfig {
     }
     
     
-     public static PilaUsuario<usuario> cargarUsuariosEnPila() {
-         PilaUsuario<usuario> pila = new PilaUsuario<>();
+     public static Pila<usuario> cargarUsuariosEnPila() {
+         Pila<usuario> pila = new Pila<>();
          if (!existeArchivoConfig()){
              return pila;
             
@@ -113,7 +138,7 @@ public class GestorConfig {
      
      public static void ejecutarConfiguracion(){
          
-     PilaUsuario pila = new PilaUsuario();
+     Pila pila = new Pila();
          Scanner sc = new Scanner(System.in);
             System.out.println("\n--- CONFIGURACIÓN INICIAL ---");
             System.out.print("Nombre de la sede hospitalaria: ");

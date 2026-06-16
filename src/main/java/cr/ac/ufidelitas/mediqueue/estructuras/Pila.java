@@ -10,11 +10,11 @@ import cr.ac.ufidelitas.mediqueue.modelo.usuario;
  *
  * @author Usuario
  */
-public class PilaUsuario <T> {
+public class Pila <T> {
     
     private Nodo<T> cima;
 
-    public PilaUsuario() {
+    public Pila() {
         this.cima = null;
     }
 

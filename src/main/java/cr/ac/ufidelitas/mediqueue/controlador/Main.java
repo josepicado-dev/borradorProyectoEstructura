@@ -25,10 +25,10 @@ public class Main {
         System.out.println("=========================================");
         if (!GestorConfig.existeArchivoConfig())
             GestorConfig.ejecutarConfiguracion();
-        } else {
-            config = ArchivoJSON.leerSede(rutaArchivo);
+        }
+            
         
         
-    }
+    
     
 }
