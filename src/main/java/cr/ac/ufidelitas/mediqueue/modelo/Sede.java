@@ -38,6 +38,10 @@ public class Sede {
         this.cantidadSalasEmer = cantidadSalasEmer;
     }
 
+    public Sede(String hospital_Central, int i, int i0, int i1, int i2, int i3, int i4) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getNombreSede() {
         return nombreSede;
     }
